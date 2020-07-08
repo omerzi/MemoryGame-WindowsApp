@@ -28,8 +28,8 @@ namespace MemoryGame_UI
 
         public void Run()
         {
-            DialogResult isValidSettings = r_GameSettings.ShowDialog();
-            if (isValidSettings == DialogResult.OK)
+            DialogResult result = r_GameSettings.ShowDialog();
+            if (result != DialogResult.Cancel)
             {
                 startGame();
             }

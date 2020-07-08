@@ -121,6 +121,8 @@ namespace MemoryGame_UI
                         m_BoardWidth,
                         GameManager.eGameType.AgainstPlayer);
                 }
+
+                this.DialogResult = DialogResult.OK;
             }
         }
     }

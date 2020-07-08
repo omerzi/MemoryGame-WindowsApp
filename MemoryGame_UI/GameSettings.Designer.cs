@@ -127,7 +127,6 @@
             // buttonStart
             // 
             this.buttonStart.BackColor = System.Drawing.Color.LightGreen;
-            this.buttonStart.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.buttonStart.Location = new System.Drawing.Point(335, 139);
             this.buttonStart.Name = "buttonStart";
             this.buttonStart.Size = new System.Drawing.Size(115, 43);
