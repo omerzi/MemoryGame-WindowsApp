@@ -1,6 +1,6 @@
 ﻿namespace MemoryGame_UI
 {
-    partial class GameSettings
+    public partial class GameSettings
     {
         /// <summary>
         /// Required designer variable.
@@ -17,6 +17,7 @@
             {
                 components.Dispose();
             }
+
             base.Dispose(disposing);
         }
 

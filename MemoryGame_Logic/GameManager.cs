@@ -8,13 +8,13 @@ namespace MemoryGame_Logic
 {
     public class GameManager
     {
+        private readonly Random r_ComputerCellChoise = new Random();
         private Board m_Board;
         private Player m_FirstPlayer;
         private Player m_SecondPlayer;
         private PcPlayer m_PcPlayer = null;
         private eGameType m_GameType;
         private ePlayerType m_CurrentPlayer;
-        private readonly Random r_ComputerCellChoise = new Random();
 
         public Board Board
         {
@@ -36,7 +36,6 @@ namespace MemoryGame_Logic
 
         public string SecondPlayerName
         {
-
             get 
             {
                 if (m_PcPlayer == null)
@@ -77,6 +76,7 @@ namespace MemoryGame_Logic
             FirstPlayer,
             SecondPlayer
         }
+
         public GameManager(int i_BoardWidth, int i_BoardHeight, string i_FirstPlayerName, string i_SecondPlayerName, eGameType i_GameType)
         {
             m_Board = new Board(i_BoardHeight, i_BoardWidth);

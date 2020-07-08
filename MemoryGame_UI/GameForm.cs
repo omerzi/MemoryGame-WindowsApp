@@ -13,17 +13,17 @@ namespace MemoryGame_UI
 {
     public partial class GameForm : Form
     {
-        private Button[,] m_ButtonMatrix;
         private readonly Dictionary<Button, Point> r_ButtonsLocations = new Dictionary<Button, Point>();
+        private Button[,] m_ButtonMatrix;
         private int m_ClickCounter = 0;
         private Button m_LastSender = null;
 
-        public event Action <int, int, int> ExposeButtonListeners;
+        public event Action<int, int, int> ExposeButtonListeners;
 
         public GameForm(int i_BoardHeight, int i_BoardWidth)
         {
             InitializeComponent();
-            this.ClientSize = new Size(i_BoardWidth * 70 + 40, i_BoardHeight * 70 + 100);
+            this.ClientSize = new Size((i_BoardWidth * 70) + 40, (i_BoardHeight * 70) + 100);
             initBoard(i_BoardHeight, i_BoardWidth);
         }
 
@@ -36,9 +36,9 @@ namespace MemoryGame_UI
                 {
                     m_ButtonMatrix[i, j] = new Button();
                     m_ButtonMatrix[i, j].Size = new Size(60, 60);
-                    m_ButtonMatrix[i, j].Location = new Point(20 + 70 * j, 20 + 70 * i);
+                    m_ButtonMatrix[i, j].Location = new Point(20 + (70 * j), 20 + (70 * i));
                     m_ButtonMatrix[i, j].MouseClick += removeButtonFocus_MouseClick;
-                    m_ButtonMatrix[i, j].Click += ExposeButton_Click;
+                    m_ButtonMatrix[i, j].Click += exposeButton_Click;
                     m_ButtonMatrix[i, j].BackColor = Color.LightGray;
                     m_ButtonMatrix[i, j].TabStop = false;
 
@@ -71,11 +71,11 @@ namespace MemoryGame_UI
                i_SecondPlayerPoints);
         }
 
-        private void ExposeButton_Click(object sender, EventArgs e)
+        private void exposeButton_Click(object sender, EventArgs e)
         {
             if ((sender as Button) != m_LastSender)
             {
-                m_LastSender = (sender as Button);
+                m_LastSender = sender as Button;
                 m_ClickCounter++;
                 Point matrixLocation;
                 bool isPointExist = r_ButtonsLocations.TryGetValue(sender as Button, out matrixLocation);
@@ -113,6 +113,7 @@ namespace MemoryGame_UI
             {
                 return m_ButtonMatrix[row, column];
             }
+
             set
             {
                 m_ButtonMatrix[row, column] = value;
@@ -149,7 +150,8 @@ namespace MemoryGame_UI
             {
                 result = string.Format(
 @"Congratulations {0}, you won the Game!
-Would you like another round?", i_WinnerName);
+Would you like another round?",
+i_WinnerName);
             }
             else
             {

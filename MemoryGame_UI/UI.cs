@@ -13,13 +13,12 @@ namespace MemoryGame_UI
     public class UI
     {
         private const int k_MaxNumOfClicks = 2;
-        private Color m_CurrentPlayerColor;
         private readonly GameSettings r_GameSettings = new GameSettings();
+        private readonly List<Point> r_UserClicks = new List<Point>();
+        private Color m_CurrentPlayerColor;
         private GameManager m_GameManager;
         private GameForm m_GameForm;
-        private readonly List<Point> r_UserClicks = new List<Point>();
         private char[] m_ObjectArray;
-
 
         public UI()
         {
@@ -141,14 +140,14 @@ namespace MemoryGame_UI
         private void initGame(
             string i_FirstPlayerName,
             string i_SecondPlayerName,
-            int i_BoardHeight, int i_BoardWidth,
+            int i_BoardHeight, 
+            int i_BoardWidth,
             GameManager.eGameType i_eGameType)
         {
             m_GameManager = new GameManager(i_BoardWidth, i_BoardHeight, i_FirstPlayerName, i_SecondPlayerName, i_eGameType);
             r_GameSettings.Hide();
             m_GameForm = new GameForm(i_BoardHeight, i_BoardWidth);
             m_GameForm.ExposeButtonListeners += exposeButton;
-
             m_ObjectArray = new char[(i_BoardHeight * i_BoardWidth) / 2];
             setSigns(m_ObjectArray);
         }

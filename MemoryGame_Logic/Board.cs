@@ -11,7 +11,7 @@ namespace MemoryGame_Logic
         private int m_Width;
         private int m_Height;
         private Card[,] m_GameBoard;
-        Random m_ChooseIndexForCard = new Random();
+        private Random m_ChooseIndexForCard = new Random();
 
         public Board(int i_Height, int i_Width)
         {
@@ -66,6 +66,7 @@ namespace MemoryGame_Logic
             {
                 return m_GameBoard[row, column];
             }
+
             set 
             {
                 m_GameBoard[row, column] = value; 
@@ -98,10 +99,8 @@ namespace MemoryGame_Logic
             }
         }
 
-
         private void shuffleIndexers()
         {
-
             int columnRandom, lineRandom, tempIndex;
             for(int i = 0; i < Height; i++)
             {
